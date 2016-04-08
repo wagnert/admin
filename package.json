@@ -9,7 +9,7 @@
     "typings": "typings",
     "postinstall": "typings install" 
   },
-  "license": "ISC",
+  "license": "OSL v3",
   "dependencies": {
     "angular2": "2.0.0-beta.13",
     "systemjs": "0.19.25",
@@ -24,6 +24,7 @@
     "lite-server": "^2.1.0",
     "typescript": "^1.8.9",
     "typings":"^0.7.11",
-    "jasmine-core": "2.4.x"
+    "jasmine-core": "2.4.x",
+    "jasmine-node": "1.14.x"
   }
 }
