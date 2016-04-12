@@ -1,11 +1,13 @@
-import {Injectable} from 'angular2/core';
-import {TokenDto} from '../dtos/token.dto';
-import {LoginDto} from '../dtos/login.dto';
-import {Observable} from 'rxjs/Observable';
-import {LogService} from './log.service';
-import {TokenService} from './token.service';
-import {Router} from 'angular2/router';
+import {Injectable}                              from 'angular2/core';
+import {TokenDto}                                from '../dtos/token.dto';
+import {LoginDto}                                from '../dtos/login.dto';
+import {Observable}                              from 'rxjs/Observable';
+import {LogService}                              from './log.service';
+import {TokenService}                            from './token.service';
+import {Configuration}                           from '../app-config';
+import {Router}                                  from 'angular2/router';
 import {Http, RequestOptions, Headers, Response} from 'angular2/http';
+
 import 'rxjs/Rx';
 
 @Injectable()
@@ -13,9 +15,8 @@ export class LoginService {
     
     private lastLoginUnsuccessful: boolean;
     
-    private apiEndpoint: string = "http://api.dev/p_security_check.do";
-    
     public constructor(
+        private config: Configuration,
         private http: Http,
         private router: Router,
         private logService: LogService,
@@ -56,7 +57,7 @@ export class LoginService {
         let options = new RequestOptions({ headers: new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' }) });
         
         return Observable.create((observer)=> {
-            this.http.post(this.apiEndpoint, body, options)
+            this.http.post(this.config.apiEndpoint + "p_security_check.do", body, options)
                 .map(response => <TokenDto>response.json())
                 .subscribe(
                     (tokenDto) => {
