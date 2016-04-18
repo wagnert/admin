@@ -12,3 +12,5 @@ node_modules
 
 ## Add gulp files
 !/gulp**/*
+!/src/system.setup.js
+!/system.config.js
