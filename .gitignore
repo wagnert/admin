@@ -1,6 +1,14 @@
+## Ignore vendor libraries
 typings
 node_modules
+
+## Ignore compiled/generated files
 *.js
 *.js.map
 /dist/
+
+## Ignore MacOS tmp files
 /.DS_*
+
+## Add gulp files
+!/gulp**/*
